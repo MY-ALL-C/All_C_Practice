@@ -3,8 +3,8 @@
 This is a technical guide to the C Basic & Advance Practices ::
 -------
 
-#Topic 1        ::      C Program Structure
-#Topic 2        ::      ..
+#Topic 1        ::      C - Program Structure
+#Topic 2        ::      C - Data Types
 
 
 
@@ -17,7 +17,7 @@ This is a technical guide to the C Basic & Advance Practices ::
 
 
 __________________________________
-#1 C Program Structure ::
+#1 C - Program Structure ::
 
 A C program basically consists of the following parts :
     - Preprocessor Commands
@@ -34,10 +34,45 @@ Tokens in C :
 A C program consists of various tokens.
 A token is can be an identifier, a keyword, a constant, a string literal, or a symbol.
 
+Identifier In C :
+An Identifier starts with a letter A to Z, a to z, or an underscore '_' followed by zero or more letters, underscores, and digits (0 to 9).
+C does not allow punctuation characters such as @, $, and % within identifiers.
+C is a case-sensitive programming language.
 
-An identifier starts with a letter A to Z, a to z, or an underscore '_' followed by zero or more letters, underscores, and digits (0 to 9).
 
-C does not allow punctuation characters such as @, $, and % within identifiers. C is a case-sensitive programming language.
+Keywords in C :
+The following is a list of keywords available with c
+auto        else        long        switch
+break       enum        register	typedef
+case        extern      return      union
+char        float       short       unsigned
+const       for         signed      void
+continue    goto        sizeof      volatile
+default     if          static      while
+do          int         struct      _Packed
+double			
+
+rerely used keywords :: register, volatile, _Packed
+Tips :: Try to learn the uses of {enum} keyword in coding
+
+
+Whitespace In C :
+Whitespace is the term used in C to describe blanks, tabs, newline characters and comments.
+Whitespace separates one part of a statement from another and enables the compiler to identify where one element in a statement, such as int, ends and the next element begins
+
+
+_________________________________
+#2 C DataTypes ::
+
+
+
+
+
+
+
+
+
+
 
 
 
