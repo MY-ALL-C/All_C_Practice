@@ -1,0 +1,52 @@
+
+-------
+This is a technical guide to the C Basic & Advance Practices ::
+-------
+
+#Topic 1        ::      C Program Structure
+#Topic 2        ::      ..
+
+
+
+
+
+
+
+
+
+
+
+__________________________________
+#1 C Program Structure ::
+
+A C program basically consists of the following parts :
+    - Preprocessor Commands
+    - Functions
+    - Variables
+    - Statements & Expressions
+    - Comments
+
+#include <stdio.h> is a preprocessor command, which tells a C compiler to include stdio.h file before going to actual compilation.
+int main() is the main function where the program execution begins.
+The next line return 0; terminates the main() function and returns the value 0.
+
+Tokens in C :
+A C program consists of various tokens.
+A token is can be an identifier, a keyword, a constant, a string literal, or a symbol.
+
+
+An identifier starts with a letter A to Z, a to z, or an underscore '_' followed by zero or more letters, underscores, and digits (0 to 9).
+
+C does not allow punctuation characters such as @, $, and % within identifiers. C is a case-sensitive programming language.
+
+
+
+
+
+
+
+
+
+
+
+
