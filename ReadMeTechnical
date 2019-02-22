@@ -5,7 +5,50 @@ This is a technical guide to the C Basic & Advance Practices ::
 
 #Topic 1        ::      C - Program Structure
 #Topic 2        ::      C - Data Types
+#Topic 3        ::      C - Variables
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+______________________________________________________________________________________________________________________________
+
+A TYPICAL ERROR FORMAT IN C ::
+______________________________________________________________________________________________________________________________
+
+2DataType.c: In function ‘main’:
+2DataType.c:14:51: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+     printf("The Size of int in this machine is : %d  \n", sizeof(int));
+                                                  ~^
+                                                  %ld
+
+In The second Line The o/p snippet      2DataType.c:14:51: warning:     describes as::
+2DataType.c     ==>     The File Name,
+14:51           ==>     The Line Number and the character no in the line.
+warning         ==>     The Critical depth of the ERROR.
+
+In The 5th Line there is a possible suggestion.
+
+______________________________________________________________________________________________________________________________
+
+A Error Recorded When an empty c source file wad attempted to compile ::
+______________________________________________________________________________________________________________________________
+/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+collect2: error: ld returned 1 exit status
 
 
 
@@ -63,12 +106,101 @@ Whitespace separates one part of a statement from another and enables the compil
 
 _________________________________
 #2 C DataTypes ::
+In all programming language the type of a variable determines how much space it occupies in storage and how the bit pattern stored is interpreted.
+
+types in C can be classified as follows −
+
+Basic Types :
+        (a) integer types and
+        (b) floating-point types.
+Enumerated types :
+        They are again arithmetic types and they are used to define variables that can only assign certain  [ discrete integer ] values throughout the program.
+Void type :
+        The type specifier void indicates that no value is available.
+Derived types :
+        (a) Pointer types
+        (b) Array types
+        (c) Structure types
+        (d) Union types and
+        (e) Function types.
+
+The [array type] and {structure type} are referred collectively as the --aggregate types--.
+The type of a function specifies the type of the { function's return value }.
+
+Integer Types ::
+----------------------------------------------------------------------------------------------------------
+Type	            Storage size	    Value range
+----------------------------------------------------------------------------------------------------------
+char	            1 byte	            -128 to 127 or 0 to 255
+unsigned char	    1 byte	            0 to 255
+signed char	        1 byte	            -128 to 127
+int	                2 or 4 bytes	    -32,768 to 32,767 or -2,147,483,648 to 2,147,483,647
+unsigned int	    2 or 4 bytes	    0 to 65,535 or 0 to 4,294,967,295
+short	            2 bytes	            -32,768 to 32,767
+unsigned short	    2 bytes	            0 to 65,535
+long	            4 bytes	            -2,147,483,648 to 2,147,483,647
+unsigned long	    4 bytes	            0 to 4,294,967,295
+----------------------------------------------------------------------------------------------------------
+
+Floating-Point Types ::
+----------------------------------------------------------------------------------------------------------
+Type	            Storage size	        Value range	Precision
+--------------------------------------------------------------------------------------------------------
+float	            4 byte	                1.2E-38 to 3.4E+38	6 decimal places
+double	            8 byte	                2.3E-308 to 1.7E+308	15 decimal places
+long double	        10 byte	                3.4E-4932 to 1.1E+4932	19 decimal places
+
+
+The void Type ::
+The void type specifies that no value is available.
+Void is used in three kinds of situations −
+
+Function returns as void :
+    There are various functions in C which do not return any value or you can say they return void.
+    A function with no return value has the return type as void. For example, void exit (int status);
+Function arguments as void :
+    There are various functions in C which do not accept any parameter.
+    A function with no parameter can accept a void. For example, int rand(void);
+Pointers to void :
+    A pointer of type void * represents the [address of an object], but not its type.
+    For example, a memory allocation function {{    void *malloc(size_t size);   }}
+    returns a pointer to void -- which can be casted to any data type -- .
+
+[**] OVERALLY SPEAKING THE [VOID] DEALS WITH {TYPE} NOT VALUE
+     For a scinario POINTER OF TYPE VOID, Does Contain the information about VALUE(ADDRESS) NOT type of the pointer.
 
 
 
 
 
 
+
+
+_________________________________
+#3 C Variables ::
+Each variable in C has a specific type, which determines
+    the size and layout of the variable's memory;
+    the range of values that can be stored within that memory; and
+    the set of operations that can be applied to the variable.
+
+char    ::  Typically a single octet(one byte). This is an integer type.	
+int     ::  The most natural size of integer for the machine.
+float   ::  A single-precision floating point value.
+double  ::  A double-precision floating point value.
+void    ::  Represents the absence of type.
+
+
+C programming language also allows to define various other types of variables, like : Enumeration, Pointer, Array, Structure, Union
+
+VAriable Declaration & VAriable Definition :
+VAriable Declaration tells the compiler How much storage space to occupy, a typical variable Declaration looks as follows:
+int c, d;
+
+A variable definition has its meaning at the time of compilation only, the compiler needs actual variable definition at the time of linking the program.
+
+A variable declaration is useful when you are using multiple files and you define your variable in one of the files which will be available at the time of linking of the program.
+You will use the keyword [[ extern ]] to declare a variable at any place.
+Though you can [ declare ] a variable multiple times in your C program, it can be [ defined ] only once in a file, a function, or a block of code.
 
 
 
