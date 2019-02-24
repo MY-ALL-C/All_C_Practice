@@ -1,0 +1,20 @@
+Added some c files - practice
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   3VariableSample.c
+#	new file:   4Constant.c
+#	new file:   5static.c
+#	new file:   6extern.c
+#	modified:   ReadMeTechnical
+#	renamed:    C_ritchie_book.pdf -> StudyMaterial/C_ritchie_book.pdf
+#	renamed:    n1124.pdf -> StudyMaterial/n1124.pdf
+#	renamed:    n1570.pdf -> StudyMaterial/n1570.pdf
+#	renamed:    the_c_programming_language_2_orig.pdf -> StudyMaterial/the_c_programming_language_2_orig.pdf
+#	modified:   a.out
+#	new file:   support.c
+#
