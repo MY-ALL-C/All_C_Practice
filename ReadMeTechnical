@@ -6,10 +6,9 @@ This is a technical guide to the C Basic & Advance Practices ::
 #Topic 1        ::      C - Program Structure
 #Topic 2        ::      C - Data Types
 #Topic 3        ::      C - Variables
-
-
-
-
+#Topic 4        ::      C - Constants and Literals
+#Topic 5        ::      C - Storage Classes
+#Topic 6        ::      C - Operators
 
 
 
@@ -206,6 +205,92 @@ Though you can [ declare ] a variable multiple times in your C program, it can b
 
 
 
+________________________________
+#4 C Constants and Literals ::
+
+Constants : Refers to the value that doesn't change 
+Constants can be of any of the basic data types like:
+    an integer constant,
+    a floating constant,
+    a character constant, or 
+    a string literal.
+    There are enumeration constants as well.
+
+An integer literal can be a decimal, octal, or hexadecimal constant.
+A prefix specifies the base or radix: 0x or 0X for hexadecimal, 0 for octal, and nothing for decimal.
+
+An integer literal can also have a suffix that is a combination of U and L, for unsigned and long, respectively.
+The suffix can be uppercase or lowercase and can be in any order.
+
+Floating-point Literals ::
+While representing decimal form, you must include the decimal point, the exponent, or both; and while representing exponential form, you must include the integer part, the fractional part, or both.
+The signed exponent is introduced by e or E.
+
+A character literal can be a
+    plain character (e.g., 'x'),
+    an escape sequence (e.g., '\t'), or
+    a universal character (e.g., '\u02C0').
+
+There are certain characters in C that represent special meaning when preceded by a backslash for example, newline (\n) or tab (\t).
+
+Defining Constants :
+There are two simple ways in C to define constants −
+    Using #define preprocessor.     ==>     #define identifier value
+    Using const keyword.
+
+
+
+_________________________________
+#5 C - Storage Classes ::
+
+We have four different storage classes in a C program −
+    -auto
+    -register
+    -static
+    -extern
+
+------------
+auto ::
+------------
+'auto' can only be used within functions, i.e., local variables.
+{   int mount;
+    auto int month;
+}
+
+--------------
+register ::
+--------------
+The register storage class is used to define local variables that should be stored in a register instead of RAM.
+This means that the variable has a maximum size equal to the register size (usually one word) and can't have the unary '&' operator applied to it (as it does not have a memory location).
+{
+   register int  miles;
+}
+The register should only be used for variables that require quick access such as counters.
+
+It should also be noted that defining 'register' does not mean that the variable will be stored in a register.
+It means that it MIGHT be stored in a register depending on hardware and implementation restrictions.
+
+-----------------------------
+The static Storage Class ::
+-----------------------------
+The static storage class instructs the compiler to keep a local variable in existence during the life-time of the program instead of creating and destroying it each time it comes into and goes out of scope.
+Therefore, making local variables static allows them to maintain their values between function calls.
+
+The static modifier may also be applied to global variables.
+When this is done, it causes that variable's scope to be restricted to the file in which it is declared.
+
+In C programming, when static is used on a global variable, it causes only one copy of that member to be shared by all the objects of its class.
+
+-------------------------------
+The extern Storage Class ::
+-------------------------------
+The extern storage class is used to give a reference of a global variable that is visible to ALL the program files.
+When you use 'extern', the variable cannot be initialized however, it points the variable name at a storage location that has been previously defined.
+
+When you have multiple files and you define a global variable or function, which will also be used in other files, then extern will be used in another file to provide the reference of defined variable or function.
+Just for understanding, extern is used to declare a global variable or function in another file.
+
+The extern modifier is most commonly used when there are two or more files sharing the same global variables or functions.
 
 
 
@@ -214,6 +299,36 @@ Though you can [ declare ] a variable multiple times in your C program, it can b
 
 
 
+
+____________________________________________
+#6 C - Operators
+C language is rich in built-in operators and provides the following types of operators −
+    Arithmetic Operators
+    Relational Operators
+    Logical Operators
+    Bitwise Operators
+    Assignment Operators
+    Misc Operators
+
+
+Arithmetic Operators :
++   −   *   /   %   ++  --
+
+Relational Operators
+==	!=	>	<	>=	<=
+
+Logical Operators
+&&	||	! ^
+^ -- The operaot is called Exclusive Or
+
+
+Bitwise Operators
+&	Binary AND Operator copies a bit to the result if it exists in both operands.	(A & B) = 12, i.e., 0000 1100
+|	Binary OR Operator copies a bit if it exists in either operand.	(A | B) = 61, i.e., 0011 1101
+^	Binary XOR Operator copies the bit if it is set in one operand but not both.	(A ^ B) = 49, i.e., 0011 0001
+~	Binary One's Complement Operator is unary and has the effect of 'flipping' bits.	(~A ) = ~(60), i.e,. -0111101
+<<	Binary Left Shift Operator. The left operands value is moved left by the number of bits specified by the right operand.	A << 2 = 240 i.e., 1111 0000
+>>	Binary Right Shift Operator. The left operands value is moved right by the number of bits specified by the right operand.	A >> 2 = 15 i.e., 0000 1111
 
 
 
