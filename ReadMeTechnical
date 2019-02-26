@@ -9,6 +9,11 @@ This is a technical guide to the C Basic & Advance Practices ::
 #Topic 4        ::      C - Constants and Literals
 #Topic 5        ::      C - Storage Classes
 #Topic 6        ::      C - Operators
+#Topic 7        ::      C - Decision Making
+#Topic 8        ::      C - Loops
+#topic 9        ::      C - Functions
+#Topic 10       ::      C - Scope Rules
+#Topic 11       ::      C - Arrays
 
 
 
@@ -17,9 +22,7 @@ This is a technical guide to the C Basic & Advance Practices ::
 
 
 
-
-
-
+NOTE :: It is important to consider the [POINTER] As storage space for [REFERENCE]
 
 
 
@@ -322,13 +325,182 @@ Logical Operators
 ^ -- The operaot is called Exclusive Or
 
 
-Bitwise Operators
+Bitwise Operators :
 &	Binary AND Operator copies a bit to the result if it exists in both operands.	(A & B) = 12, i.e., 0000 1100
 |	Binary OR Operator copies a bit if it exists in either operand.	(A | B) = 61, i.e., 0011 1101
 ^	Binary XOR Operator copies the bit if it is set in one operand but not both.	(A ^ B) = 49, i.e., 0011 0001
 ~	Binary One's Complement Operator is unary and has the effect of 'flipping' bits.	(~A ) = ~(60), i.e,. -0111101
-<<	Binary Left Shift Operator. The left operands value is moved left by the number of bits specified by the right operand.	A << 2 = 240 i.e., 1111 0000
->>	Binary Right Shift Operator. The left operands value is moved right by the number of bits specified by the right operand.	A >> 2 = 15 i.e., 0000 1111
+<<	Binary Left Shift Operator.
+    The left operands value is moved left by the number of bits specified by the right operand.
+    A << 2 = 240 i.e., 1111 0000
+>>	Binary Right Shift Operator.
+    The left operands value is moved right by the number of bits specified by the right operand.
+    A >> 2 = 15 i.e., 0000 1111
+
+
+Assignment Operator :
+=	+=	-=	*=	/=	%=	<<=	>>=	&=	^=	|=	
+
+Misc Operators sizeof & ternary :
+sizeof()	Returns the size of a variable.	sizeof(a), where a is integer, will return 4.
+&	        Returns the address of a variable.	&a; returns the actual address of the variable.
+*	        Pointer to a variable.	*a;
+? :	        Conditional Expression.	If Condition is true ? then value X : otherwise value Y
+
+
+Operators Precedence in C :
+
+Category	        Operator	                        Associativity
+Postfix	            () [] -> . ++ - -	                Left to right
+Unary	            + - ! ~ ++ - - (type)* & sizeof	    Right to left
+Multiplicative	    * / %	                            Left to right
+Additive	        + -	                                Left to right
+Shift	            << >>	                            Left to right
+Relational	        < <= > >=	                        Left to right
+Equality	        == !=	                            Left to right
+Bitwise             AND	&	                            Left to right
+Bitwise             XOR	^	                            Left to right
+Bitwise             OR	|	                            Left to right
+Logical             AND	&&	                            Left to right
+Logical             OR	||	                            Left to right
+Conditional	        ?:	                                Right to left
+Assignment	        = += -= *= /= %=>>= <<= &= ^= |=	Right to left
+Comma	            ,	                                Left to right
+
+
+
+___________________________________________________
+#7 C - Decision Making ::
+
+C programming language assumes any [non-zero] and [non-null] values as true, and if it is either zero or null, then it is assumed as false value.
+
+
+if  --   else if  --  else,     &       nested if
+
+if.. else in Short  ::  Exp1 ? Exp2 : Exp3;
+
+switch.. case.. & nested switch ::
+switch(expression) {
+   case constant-expression  :
+      statement(s);
+      break; 
+   default : 
+   statement(s);
+}
+
+
+
+
+____________________________________________________
+#8 C - Loops ::
+
+For Loop    : for ( init; condition; increment ) {statement(s);}
+While Loop  : while(condition) {statement(s);}
+do..while Loop  : do {statement(s);} while( condition );
+Break statement : break;
+Continue Statement  : continue;
+goto label
+
+
+goto label;
+..
+.
+label: statement;   [X Statements]
+
+
+for ( init; condition; increment ) {
+   for ( init; condition; increment ) {statement(s);}
+   statement(s);
+}
+while(condition) {
+   while(condition) {statement(s);}
+   statement(s);
+}
+do {
+   statement(s);
+   do {statement(s);}while( condition );
+}while( condition );
+
+
+
+
+
+__________________________________________________
+#9 C - Functions ::
+
+A function in c have the following things : Return Type, Function Name, Function Parameter, Function Body
+A sample function looks like        :      int myCustomFunction(int parameter) {}
+A sample function declaration looks like    :   int myCustomFunction(int);
+
+Calling Function :
+In c there are two ways to call a function
+    -- Call By Value
+    -- Call By reference
+
+it's important to consider as the the Pointer as storage space for the reference [address]
+declaring a pointer :: *ip
+assigning the address to the pointer :: ip = &variable
+
+while printing the value of ip the o/p will be address
+if you want to print the value stored inside the pointer then use *ip
+
+When you want value from the pointer expression, use "*" [The * is used in two scinario 1st @ for declaring a pointer and second getting the value out of the pointer]
+
+    //Calling a function
+        swap(&a, &b);
+            ||
+            ||
+            \/
+    void swap(int *x, int *y); //Pointer as the storage space of address
+
+missing the return type while declaring gives the following error ::
+11CallByReference.c:6:1: warning: data definition has no type or storage class
+ swap(int *First, int *Second);
+ ^~~~
+
+
+
+
+_________________________________________
+#10 C - Scope Rules ::
+
+In C we have 3 scope rules available    :   Global, Local, Formal
+
+When a [[ local variable ]] is defined, it is [ not initialized ] by the system, you must initialize it yourself.
+[[ Global variables ]] are initialized automatically by the system when you define them as follows
+
+Data Type	Initial Default Value
+int                 0
+char                '\0'
+float               0
+double              0
+pointer             NULL
+
+It's a good programming Practice to initialize the variable @ the time of declaration, to avoid unexpected garbage value.
+
+
+
+
+
+
+
+
+____________________________________________
+#11 C - Arrays ::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

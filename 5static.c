@@ -11,7 +11,7 @@ int main(){
         j--;
     }    
 }
-
+//
 
 void func(void){
     static int i = 0;
