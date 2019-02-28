@@ -14,8 +14,8 @@ This is a technical guide to the C Basic & Advance Practices ::
 #topic 9        ::      C - Functions
 #Topic 10       ::      C - Scope Rules
 #Topic 11       ::      C - Arrays
-
-
+#Topic 12       ::      C - Pointers
+#Topic 13       ::      C - Strings
 
 
 
@@ -23,8 +23,6 @@ This is a technical guide to the C Basic & Advance Practices ::
 
 
 NOTE :: It is important to consider the [POINTER] As storage space for [REFERENCE]
-
-
 
 ______________________________________________________________________________________________________________________________
 
@@ -51,11 +49,6 @@ ________________________________________________________________________________
 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o: In function `_start':
 (.text+0x20): undefined reference to `main'
 collect2: error: ld returned 1 exit status
-
-
-
-
-
 
 
 
@@ -172,12 +165,6 @@ Pointers to void :
      For a scinario POINTER OF TYPE VOID, Does Contain the information about VALUE(ADDRESS) NOT type of the pointer.
 
 
-
-
-
-
-
-
 _________________________________
 #3 C Variables ::
 Each variable in C has a specific type, which determines
@@ -203,9 +190,6 @@ A variable definition has its meaning at the time of compilation only, the compi
 A variable declaration is useful when you are using multiple files and you define your variable in one of the files which will be available at the time of linking of the program.
 You will use the keyword [[ extern ]] to declare a variable at any place.
 Though you can [ declare ] a variable multiple times in your C program, it can be [ defined ] only once in a file, a function, or a block of code.
-
-
-
 
 
 ________________________________
@@ -240,7 +224,6 @@ Defining Constants :
 There are two simple ways in C to define constants −
     Using #define preprocessor.     ==>     #define identifier value
     Using const keyword.
-
 
 
 _________________________________
@@ -294,12 +277,6 @@ When you have multiple files and you define a global variable or function, which
 Just for understanding, extern is used to declare a global variable or function in another file.
 
 The extern modifier is most commonly used when there are two or more files sharing the same global variables or functions.
-
-
-
-
-
-
 
 
 
@@ -368,12 +345,10 @@ Assignment	        = += -= *= /= %=>>= <<= &= ^= |=	Right to left
 Comma	            ,	                                Left to right
 
 
-
 ___________________________________________________
 #7 C - Decision Making ::
 
 C programming language assumes any [non-zero] and [non-null] values as true, and if it is either zero or null, then it is assumed as false value.
-
 
 if  --   else if  --  else,     &       nested if
 
@@ -388,9 +363,6 @@ switch(expression) {
    statement(s);
 }
 
-
-
-
 ____________________________________________________
 #8 C - Loops ::
 
@@ -400,7 +372,6 @@ do..while Loop  : do {statement(s);} while( condition );
 Break statement : break;
 Continue Statement  : continue;
 goto label
-
 
 goto label;
 ..
@@ -420,10 +391,6 @@ do {
    statement(s);
    do {statement(s);}while( condition );
 }while( condition );
-
-
-
-
 
 __________________________________________________
 #9 C - Functions ::
@@ -458,9 +425,6 @@ missing the return type while declaring gives the following error ::
  swap(int *First, int *Second);
  ^~~~
 
-
-
-
 _________________________________________
 #10 C - Scope Rules ::
 
@@ -479,28 +443,134 @@ pointer             NULL
 It's a good programming Practice to initialize the variable @ the time of declaration, to avoid unexpected garbage value.
 
 
-
-
-
-
-
-
 ____________________________________________
 #11 C - Arrays ::
+Array is used to store collection of data.All array consists of contigious memory location.
+The Below is a array declaration sample     :   TYPE ArrayName[ArraySize];
+Array values are acessed with the array index. the index starts from 0;
+
+Sample array declaration & Initialisation : int MyIntegerArray[2] {77, 78};
+
+Multidimensional Array :
+in c Multidimensional array can be created by specifing the size of each dimenion @ the time of array declaration.
+a three dimensional array can be created by using the syntax as -
+int MyMultiDimnsionArray[2][2][2] =
+{
+    {0, 1},
+    {2, 3},
+    {4, 5},
+}
+& later the value of array can be acessed with the syntax as : int Value = MyMultiDimnsionArray[0][1][1]
+
+Passing array to function argument:
+With C - There are 3 ways of declaring formal parameter that can accept array as parameter.
+function fn(int *array){}       //passing reference to the C
+function fn1(int param[10])     //Pre Declared Size
+function fn2(int param[])       //Unsized Array
+-------------
+The length of the array doesn't matter as far as the function is concerned
+because C performs no bounds checking for formal parameters. [***]
+--imp--
+-------------
+int a[] = { 1, 2, 3 };
+int* p = a; // valid: p is now the address of a[0]
+a = p;  // NOT valid.
+-------------
+14PassingArray.c:49:44: error: subscripted value is neither array nor pointer nor vector
+   printf("The Parameters are --> %d", Value[i]);
+-------------
+
+Return Array From function:
+--  In C it is not possible to return an entire array as an argument to a function.
+    However, you can return a -pointer- to an array by specifying the array's name without an index.
+--  Secondly C does not advocate to return the address of a local variable to outside of the function,
+    so you would have to define the local variable as static variable.
+
+    Why STATIC is required ?? without static the following error was Recorded
+    function returns address of local variable [-Wreturn-local-addr]
+
+--  If you want to return a single-dimension array from a function,
+    you would have to declare a function returning a pointer as Below
+
+    int * myFunction() {}
+
+Pointer to an Array:
+While Pointing to an array, we are pointing to the first element of the array.
+that mean : the 0th element     -   &ArrayName[0]
+
+__
+double *p;
+double balance[10];
+p = balance; //Points to the first element of array
+
+The above expression is working fine without the reference operator beacuse, the rvalue is an array
+
+
+
+-----------------------------------------------------------------------------------
+Function can't return address of a local variable.
+while assigning the address of an array to pointer, there is no need of specifying &, it can be done simply
+(void*)&MyVar -- Here we are getting the [address] & then casting it to the pointer type
+-----------------------------------------------------------------------------------
+
+
+___________________________________________
+#12 C - Pointers ::
+
+Pointers in c are considered as the storage holder of reference.
+(a) We define a pointer variable,
+(b) assign the address of a variable to a pointer and
+(c) finally access the value at the address available in the pointer variable.
+
+
+NULL Pointers :
+It is always a good practice to assign a NULL value to a pointer variable in case you do not have an exact address to be assigned.
+This is done at the time of variable declaration.
+A pointer that is assigned NULL is called a null pointer.
+
+The NULL pointer is a constant with a value of zero defined in several standard libraries.
+In most of the operating systems, programs are not permitted to access memory at address 0 because that memory is reserved by the operating system.
+However, the memory address 0 has special significance; it signals that the pointer is not intended to point to an accessible memory location.
+But by convention, if a pointer contains the null (zero) value, it is assumed to point to nothing.
+
+Pointer arithmetic :
+incrementing & Decrementing & Comparing Pointer.
 
 
 
 
+19ArrayOfPointers.c:6:29: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+  int *ArrayOfPointers[3] = {1, 2, 3};
+                             ^
+
+Array Of Pointers :
+    /** Showing Error **/
+    //int *intarray[] = {8};
+
+
+Pointer To Pointer :
+When we are defining Pointer To Pointer, The Second pointer holds the address of First Pointer.
+
+Passing Pointer To Function :
 
 
 
+__________________________________________
+#13 C - Strings ::
 
+Strings are actually one-dimensional array of characters terminated by a null character '\0'.
+below is a example of string,
 
+char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
 
+Below are the string functions available with C
 
-
-
-
+strcpy(s1, s2)      Copies string s2 into string s1.
+strcat(s1, s2)      Concatenates string s2 onto the end of string s1.
+strlen(s1)          Returns the length of string s1.
+strcmp(s1, s2)      Returns 0 if s1 and s2 are the same; less than 0 if s1<s2; greater than 0 if s1>s2.
+strchr(s1, ch)      Returns a pointer to the first occurrence of character ch in string s1.
+strstr(s1, s2)      Returns a pointer to the first occurrence of string s2 in string s1.
 
 
 
